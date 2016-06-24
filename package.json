@@ -1,0 +1,64 @@
+{
+  "name": "redux-callback-reducer",
+  "version": "0.0.1",
+  "description": "Redux wrapper/decorator created reducers",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "cross-env NODE_ENV=development webpack lib/index.js dist/redux-callback-reducer.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack lib/index.js dist/redux-callback-reducer.min.js",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min && node ./prepublish",
+    "clean": "rimraf lib dist",
+    "lint": "eslint src",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devolts/redux-callback-reducer.git"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "author": "Artyom Pogrebnoy <tem.rdm@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devolts/redux-callback-reducer/issues"
+  },
+  "homepage": "https://github.com/devolts/redux-callback-reducer#readme",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-check-es2015-constants": "^6.8.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.8.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.10.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.9.0",
+    "babel-plugin-transform-es2015-function-name": "^6.9.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.10.3",
+    "babel-plugin-transform-es2015-parameters": "^6.9.0",
+    "babel-plugin-transform-es2015-spread": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "cross-env": "^1.0.8",
+    "es3ify": "^0.2.2",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "glob": "^7.0.5",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1"
+  },
+  "peerDependencies": {
+    "redux": "^2.0.0 || ^3.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
+  }
+}
