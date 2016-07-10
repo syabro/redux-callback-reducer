@@ -1,4 +1,4 @@
 import { createWrapper, createDecorator } from './wrappers';
-import { createCallbackReducer } from './reducer';
+import { createCallbackReducer, generateReducers } from './reducer';
 
-export { createCallbackReducer, createDecorator, createWrapper };
+export { createCallbackReducer, generateReducers, createDecorator, createWrapper };

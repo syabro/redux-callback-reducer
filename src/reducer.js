@@ -1,3 +1,5 @@
+import _ from 'lodash';
+import { combineReducers } from 'redux';
 import { CALLBACK_ACTION } from './action';
 
 export function createCallbackReducer(initReducerName, initialState = {}) {
@@ -11,4 +13,18 @@ export function createCallbackReducer(initReducerName, initialState = {}) {
         }
         return state;
     };
+}
+
+export function generateReducers(path, obj) {
+    if (!_.isPlainObject(obj)) {
+        throw new SyntaxError('Only plain object must be here.');
+    }
+
+    return combineReducers(_.mapValues(obj, (value, key) => {
+        if (_.isPlainObject(value) && _.keys(value).length) {
+            return generateReducers(`${path}.${key}`, value);
+        }
+
+        return createCallbackReducer(`${path}.${key}`, value);
+    }));
 }
