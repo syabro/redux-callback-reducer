@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store/
+.idea/
+src/
+example/
+npm-debug.log
+prepublish.js
+webpack.conf.js
+.eslintrc.json
+.eslintignore

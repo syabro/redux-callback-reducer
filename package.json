@@ -1,7 +1,7 @@
 {
   "name": "redux-callback-reducer",
-  "version": "0.0.1",
-  "description": "Redux wrapper/decorator created reducers",
+  "version": "0.0.2",
+  "description": "Redux wrapper/decorator to create reducers",
   "main": "./lib/index.js",
   "scripts": {
     "build:lib": "babel src --out-dir lib",
@@ -9,7 +9,6 @@
     "build:umd:min": "cross-env NODE_ENV=production webpack lib/index.js dist/redux-callback-reducer.min.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min && node ./prepublish",
     "clean": "rimraf lib dist",
-    "lint": "eslint src",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {
@@ -18,8 +17,7 @@
   },
   "files": [
     "dist",
-    "lib",
-    "src"
+    "lib"
   ],
   "author": "Artyom Pogrebnoy <tem.rdm@gmail.com>",
   "license": "MIT",
@@ -30,7 +28,7 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
-    "babel-eslint": "^6.1.0",
+    "babel-eslint": "^6.1.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-check-es2015-constants": "^6.8.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
@@ -46,11 +44,13 @@
     "es3ify": "^0.2.2",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.9.2",
-    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-react": "^5.2.2",
     "glob": "^7.0.5",
-    "rimraf": "^2.5.2",
+    "lodash": "^4.13.1",
+    "redux": "^3.5.2",
+    "rimraf": "^2.5.3",
     "webpack": "^1.13.1"
   },
   "peerDependencies": {
