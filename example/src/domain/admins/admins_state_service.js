@@ -2,11 +2,11 @@ import _ from 'lodash';
 import { wrapper } from '../decorators';
 import { AdminApiService } from './admins_api_services';
 
-export const setIsLoading = wrapper('admins.isLoading', (loading) => loading);
+export const setIsLoading = wrapper('admins.isLoading', (loading) => loading, 'setIsLoading');
 
-export const setAdmins = wrapper('admins.items', (items) => items);
+export const setAdmins = wrapper('admins.items', (items) => items, 'setAdmins');
 
-export const addAdmin = wrapper('admins.items', (user, state) => [...state, user]);
+export const addAdmin = wrapper('admins.items', (user, state) => [...state, user], 'addAdmin');
 
 export const getAdmins = () => {
     setIsLoading(true);

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux';
-import { CALLBACK_ACTION } from './action';
+import { CALLBACK_ACTION_SUFFIX } from './action';
 
 export function createCallbackReducer(initReducerName, initialState = {}) {
     if (!initReducerName) {
@@ -8,7 +8,7 @@ export function createCallbackReducer(initReducerName, initialState = {}) {
     }
 
     return (state = initialState, { type, reducerName, callback, kwargs }) => {
-        if (type === CALLBACK_ACTION && reducerName === initReducerName) {
+        if (type.endsWith(CALLBACK_ACTION_SUFFIX) && reducerName === initReducerName) {
             return callback(...kwargs, state);
         }
         return state;

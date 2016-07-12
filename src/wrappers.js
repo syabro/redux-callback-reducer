@@ -1,26 +1,24 @@
-import { CALLBACK_ACTION } from './action';
+import _ from 'lodash';
+import { CALLBACK_ACTION_SUFFIX } from './action';
 
 export function createDecorator(store) {
-    return (reducerName) => (target, property, descriptor) => {
-        const value = createWrapper(store)(reducerName, descriptor.value);
-
-        return {
-            ...descriptor,
-            value,
-        };
-    };
+    return (reducerName, callbackName) => (target, property, descriptor) => ({
+        ...descriptor,
+        value: createWrapper(store)(reducerName, descriptor.value, callbackName),
+    });
 }
 
 export function createWrapper(store) {
-    return (reducerName, callback) => {
+    return (reducerName, callback, callbackName) => {
         if (typeof callback !== 'function') {
             throw new SyntaxError('Only functions can be reducer');
         }
 
+        const type = getCallbackType(callbackName || callback.name);
+
         return (...kwargs) => {
             const action = {
-                type: CALLBACK_ACTION,
-                name: callback.name,
+                type,
                 callback,
                 reducerName,
                 kwargs,
@@ -29,4 +27,10 @@ export function createWrapper(store) {
             return store.dispatch(action);
         };
     };
+}
+
+function getCallbackType(callbackName) {
+    return callbackName ?
+        `${_.toUpper(_.snakeCase(callbackName))}_${CALLBACK_ACTION_SUFFIX}` :
+        `ANONYMOUS_${CALLBACK_ACTION_SUFFIX}`;
 }
