@@ -89,7 +89,6 @@ import { wrapper } from '../wrapper';
 export const setAdmins = wrapper('admins.items', (items, state) => items);
 
 export const getAdmins = () => fetch('/api/admins/').then(setAdmins);
-};
 ```
 
 * Decorator:
