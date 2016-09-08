@@ -4,7 +4,4 @@ node_modules/
 src/
 example/
 npm-debug.log
-prepublish.js
 webpack.conf.js
-.eslintrc.json
-.eslintignore
