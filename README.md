@@ -1,5 +1,7 @@
 # redux-callback-reducer
 
+[![NPM](https://nodei.co/npm/redux-callback-reducer.png?downloads=true&downloadRank=true)](https://nodei.co/npm/redux-callback-reducer/)
+
 redux-callback-reducer allows any function or class method to make a reducer for your state, without adding any additional actions.
 
 ## Installation
